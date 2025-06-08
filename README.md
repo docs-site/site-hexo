@@ -271,9 +271,39 @@ refusing to allow a Personal Access Token to create or update workflow `.github/
 url: https://sumumm.github.io/
 ```
 
-#### 
+### <font size=3>5. 不想每次都部署？</font>
 
-## <font size=3>三、参考资料</font>
+有时候只是简单修改，并不想部署，可以修改触发条件为tag，但是我这里并不是很想打很多的tag，可以检测关键词：
+
+```yaml
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    # 仅当提交信息包含 [deploy] 或 [update] 标签时触发
+    if: ${{ contains(github.event.head_commit.message, '[deploy]') || contains(github.event.head_commit.message, '[update]') }}
+    steps:
+    # ......
+```
+
+使用如下：
+
+```shell
+# 触发部署的提交
+git commit -m "更新文章内容 [deploy]"
+git commit -m "功能改进 [update]"
+
+# 不会触发的提交
+git commit -m "普通修改"
+git commit -m "修复拼写错误"
+
+# 跳过CI的提交
+git commit -m "临时调整 [skip ci]"
+
+```
+
+
+
+## <font size=3>四、参考资料</font>
 
 > - [Hexo](https://hexo.io/zh-cn/)
 
