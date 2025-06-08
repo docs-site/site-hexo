@@ -205,7 +205,73 @@ hexo d
 
 <img src="./README/img/image-20250608110432316.png" alt="image-20250608110432316" />
 
+### <font size=3>4. 自动部署其他仓库</font>
 
+这里实现完毕后，就可以把仓库设置为私有，即便是私有，也可以推送到其他的仓库。
+
+#### <font size=3>4.1 怎么实现？</font>
+
+这个时候就需要用到[JamesIves/github-pages-deploy-action](https://github.com/JamesIves/github-pages-deploy-action)的两个配置参数了：
+
+- token：此选项默认为可访问存储库的 Token。如果需要更多权限 (例如，部署到另一个存储库) ，可以通过此选项设置个人访问令牌 (PAT) 。本选项的值应该存储在仓库的 secrets 中，但是在本仓库为公开仓库的时候，其实是不需要的。
+
+- repository-name：允许指定其他存储库路径，只要我们有权将其推送。格式应为: `用户名/存储库名称`。我们需要设置 token 为 PAT，此配置选项才能正常运行。
+
+#### <font size=3>4.2 获得个人令牌</font>
+
+个人令牌我们需要在这里申请：[【Settings】&rarr; 【Developer Settings】&rarr;【Personal Access Tokens (Classic)】](https://github.com/settings/tokens)
+
+<img src="./README/img/image-20250602103840992.png" alt="image-20250602103840992" />
+
+创建的时候权限要勾选 workflow Update GitHub Action workflows：
+
+<img src="./README/img/image-20250602110005839.png" alt="image-20250602110005839" />
+
+否则可能会报：
+
+```shell
+refusing to allow a Personal Access Token to create or update workflow `.github/workflows/deploy-docs.yml` without `workflow` scope
+```
+
+#### <font size=3>4.3 仓库 Secrets</font>
+
+【Settings】&rarr;【Secrets and Variables】&rarr;【Actions】&rarr;【Repository secrets】：
+
+<img src="./README/img/image-20250602104355745.png" alt="image-20250602104355745" />
+
+#### <font size=3>4.4 工作流文件</font>
+
+注意，不管本仓库是私有还是公共，是向其他仓库推送的话，都需要配置个人令牌：
+
+```yml
+      - name: 部署文档到指定仓库的指定分支
+        env:
+          # 在私人源码仓库的设置中设置私钥：[SourceRepo]-->Settings-->Setrets-->Actions secrets
+          GITHUB_PERSONAL_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKENS_GITHUB }}  
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          # 部署文档
+          single-commit: true
+          branch: gh-pages
+          folder: public
+          token: ${{ secrets.PERSONAL_ACCESS_TOKENS_GITHUB }}
+          repository-name: sumumm/sumumm.github.io
+```
+
+##### <font size=3>4.4.3 部署效果</font>
+
+<img src="./README/img/image-20250608113111172.png" alt="image-20250608113111172" />
+
+#### <font size=3>4.5 `_config.yml`</font>
+
+注意这里要修改为部署的页面地址：
+
+```yaml
+## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
+url: https://sumumm.github.io/
+```
+
+#### 
 
 ## <font size=3>三、参考资料</font>
 

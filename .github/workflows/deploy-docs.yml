@@ -45,10 +45,23 @@ jobs:
           hexo clean
           hexo generate
 
-      - name: 部署文档
+      - name: 部署文档到本仓库的指定分支
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           # 部署文档
           single-commit: true # 使用单个提交进行部署
           branch: gh-pages
           folder: public
+
+      - name: 部署文档到指定仓库的指定分支
+        env:
+          # 在私人源码仓库的设置中设置私钥：[SourceRepo]-->Settings-->Setrets-->Actions secrets
+          GITHUB_PERSONAL_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKENS_GITHUB }}  
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          # 部署文档
+          single-commit: true
+          branch: gh-pages
+          folder: public
+          token: ${{ secrets.PERSONAL_ACCESS_TOKENS_GITHUB }}
+          repository-name: sumumm/sumumm.github.io
