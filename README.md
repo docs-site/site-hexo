@@ -149,6 +149,64 @@ $ hexo clean
 url: https://docs-site.github.io/site-hexo/
 ```
 
+### <font size=3>3. 手动部署其他仓库</font>
+
+上面的方式虽然方便，但是有一点不好，那就是部署后要想访问，这个仓库需要是公开的，如果不想自己的笔记源码被别人看到，那么这种方式就不是很好了。其实由上面可以知道，我们只需要将生成的静态资源，也就是`hexo-site/public`下的资源上传到某个仓库的某个分支，然后配置Pages，就可以实现部署和访问。
+
+hexo中提供了手动部署的方式，可以参考：[One-Command Deployment | Hexo](https://hexo.io/docs/one-command-deployment)，我们安装[hexojs/hexo-deployer-git](https://github.com/hexojs/hexo-deployer-git)插件：
+
+```shell
+npm install hexo-deployer-git --save
+```
+
+然后在`hexo-site/_config.yml`中配置：
+
+```yaml
+## Docs: https://hexo.io/docs/one-command-deployment
+deploy:
+  type: 'git'
+  repo: 
+    github: 'git@github.com:sumumm/site.git' # https://bitbucket.org/JohnSmith/johnsmith.bitbucket.io
+    # gitee: 'git@gitee.com:sumumm/sumumm.git'
+  branch: gh-pages
+  message:
+
+```
+
+这里就可以自己指定github仓库和分支，想要部署到哪个仓库都可以，前提是我们要有权限向这个仓库push。这个时候我们配置仓库的Pages的时候就可以选择自己想要部署的分支了。配置完成后，我们执行以下命令：
+
+```shell
+cd hexo-site
+hexo g
+hexo d
+```
+
+会看到有如下打印信息：
+
+- （1）初始化了一个.deploy_git 仓库，初始化的时候会进行一次提交
+
+<img src="./README/img/image-20250608111205871.png" alt="image-20250608111205871" />
+
+- （2）拷贝hexo-site/public中的文件到.deploy_git中。
+
+<img src="./README/img/image-20250608111230472.png" alt="image-20250608111230472" />
+
+- （3）提交所有文件
+
+<img src="./README/img/image-20250608111257556.png" alt="image-20250608111257556" />
+
+这里会有默认的提交信息。也是可以自定义的。
+
+- （4）推送到远程分支
+
+<img src="./README/img/image-20250608111429876.png" alt="image-20250608111429876" />
+
+- （5）最后就可以自动部署到指定仓库的指定分支了：
+
+<img src="./README/img/image-20250608110432316.png" alt="image-20250608110432316" />
+
+
+
 ## <font size=3>三、参考资料</font>
 
 > - [Hexo](https://hexo.io/zh-cn/)
