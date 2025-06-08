@@ -243,7 +243,7 @@ refusing to allow a Personal Access Token to create or update workflow `.github/
 
 注意，不管本仓库是私有还是公共，是向其他仓库推送的话，都需要配置个人令牌：
 
-```yml
+```yaml
       - name: 部署文档到指定仓库的指定分支
         env:
           # 在私人源码仓库的设置中设置私钥：[SourceRepo]-->Settings-->Setrets-->Actions secrets
@@ -301,13 +301,48 @@ git commit -m "临时调整 [skip ci]"
 
 ```
 
+## <font size=3>四、主题相关</font>
 
+### <font size=3>1. 安装主题</font>
 
-## <font size=3>四、参考资料</font>
+#### <font size=3>1.1 fork NexT主题</font>
+
+fork一下 [next-theme/hexo-theme-next](https://github.com/next-theme/hexo-theme-next) 到自己仓库，方便后续自己对源码的修改和更新。fork之后的仓库为 [docs-site/hexo-theme-next](https://github.com/docs-site/hexo-theme-next)。
+
+#### <font size=3>1.2 安装NexT到site-hexo</font>
+
+这里我们以子模块的方式安装：
+
+```shell
+git submodule add git@github.com:docs-site/hexo-theme-next.git themes/next
+```
+
+然后就会在themes目录生成next目录，这里就存放了NexT主题的源码了。
+
+#### <font size=3>1.3 `_config.yml`</font>
+
+然后我们修改站点配置文件中themes：
+
+```yaml
+# Extensions
+## Plugins: https://hexo.io/plugins/
+## Themes: https://hexo.io/themes/
+theme: next
+```
+
+#### <font size=3>1.4 创建主题配置文件</font>
+
+我们在hexo-site目录下创建一个`_config.next.yml`文件，在这个文件中对next主题进行配置。
+
+### <font size=3>2. 配置主题</font>
+
+这里的配置后续就主要查看提交记录，就不在这里详细去写了。
+
+## <font size=3>五、参考资料</font>
 
 > - [Hexo](https://hexo.io/zh-cn/)
 
-## <font size=3>四、小徽章</font>
+## <font size=3>六、小徽章</font>
 
 >- [badgen.net](https://badgen.net/)
 >- [Shields.io | Shields.io](https://shields.io/)

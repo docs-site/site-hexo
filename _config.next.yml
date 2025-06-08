@@ -1,0 +1,25 @@
+# =====================================================
+# * Copyright © hk. 2022-2025. All rights reserved.
+# * File name  : _config.next.yml
+# * Author     : 苏木
+# * Date       : 2025-06-08
+# * Version    : 0.0.1
+# * Description: hexo-site/_config.yml中的 theme_config > "hexo-site/_config.[theme].yml" > "hexo-site/themes/theme-name/_config.yml"
+# ======================================================
+## https://hexo.io/zh-cn/docs/configuration
+
+#################################################################
+###################### NexT Configuration #######################
+#################################################################
+
+
+# ============================================================= #
+# ====================== Scheme Settings ====================== #
+# ============================================================= #
+
+#scheme: Muse
+#scheme: Mist
+#scheme: Pisces
+scheme: Gemini
+
+darkmode: true
