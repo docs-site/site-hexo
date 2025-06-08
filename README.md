@@ -213,7 +213,7 @@ hexo d
 
 这个时候就需要用到[JamesIves/github-pages-deploy-action](https://github.com/JamesIves/github-pages-deploy-action)的两个配置参数了：
 
-- token：此选项默认为可访问存储库的 Token。如果需要更多权限 (例如，部署到另一个存储库) ，可以通过此选项设置个人访问令牌 (PAT) 。本选项的值应该存储在仓库的 secrets 中，但是在本仓库为公开仓库的时候，其实是不需要的。
+- token：此选项默认为可访问存储库的 Token。如果需要更多权限 (例如，部署到另一个存储库) ，可以通过此选项设置个人访问令牌 (PAT) 。本选项的值应该存储在仓库的 secrets 中。
 
 - repository-name：允许指定其他存储库路径，只要我们有权将其推送。格式应为: `用户名/存储库名称`。我们需要设置 token 为 PAT，此配置选项才能正常运行。
 
