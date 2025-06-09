@@ -22,12 +22,17 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          # 这一行只能检出本仓库中记录的子模块的版本，无法更到远程最新后面单独处理
+          # 这一行只能检出本仓库中记录的子模块的版本，也就是停留在父仓库记录的旧提交，无法更到远程最新，需要后面单独处理
           submodules: true
 
       - name: 更新子模块到远程最新版本
         run: |
-          git submodule update --remote
+          # git submodule update --remote
+          # 递归初始化子模块（处理嵌套子模块）
+          git submodule update --init --recursive --force
+          # 强制将每个子模块更新到远程默认分支的最新提交
+          git submodule foreach ' git fetch --all --prune --tags
+          git reset --hard origin/$(git remote show origin | grep "HEAD branch" | cut -d" " -f5)'
 
       - name: 打印相关路径
         run: | # | 为 yaml 的特定符号，其下可以使用多行文字。
@@ -46,6 +51,14 @@ jobs:
           echo "NEXT_SHORT_SHA=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
           echo "NEXT_COMMIT_MESSAGE=$(git log -1 --pretty=%B | head -n1)" >> $GITHUB_OUTPUT
 
+          # source/theme-next-docs 获取 theme-next-docs 的相关信息
+          cd ${{ github.workspace }}/source/theme-next-docs # 切换到nodejs-docs目录
+          echo "当前路径为 $(pwd)"
+          echo "THEME_NEXT_DOCS_REPO_NAME=$(git config --get remote.origin.url | sed -E 's/(git@|https:\/\/)github.com(:|\/)([^\/]+)\/([^\.]+)(\.git)?/\3\/\4/')" >> $GITHUB_OUTPUT
+          echo "THEME_NEXT_DOCS_COMMIT_ID=$(git rev-parse HEAD)" >> $GITHUB_OUTPUT
+          echo "THEME_NEXT_DOCS_SHORT_SHA=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
+          echo "THEME_NEXT_DOCS_COMMIT_MESSAGE=$(git log -1 --pretty=%B | head -n1)" >> $GITHUB_OUTPUT
+
           # 获取主仓库提交信息
           cd ${{ github.workspace }} # 切换回工作目录
           echo "当前路径为 $(pwd)"
@@ -59,6 +72,10 @@ jobs:
           echo "themes/next Commit ID : ${{ steps.get_commit_info.outputs.NEXT_COMMIT_ID }}"
           echo "themes/next Short SHA : ${{ steps.get_commit_info.outputs.NEXT_SHORT_SHA }}"
           echo "themes/next Commit Message: ${{ steps.get_commit_info.outputs.NEXT_COMMIT_MESSAGE }}"
+          echo "source/theme-next-docs Repository: ${{ steps.get_commit_info.outputs.THEME_NEXT_DOCS_REPO_NAME }}"
+          echo "source/theme-next-docs Commit ID : ${{ steps.get_commit_info.outputs.THEME_NEXT_DOCS_COMMIT_ID }}"
+          echo "source/theme-next-docs Short SHA : ${{ steps.get_commit_info.outputs.THEME_NEXT_DOCS_SHORT_SHA }}"
+          echo "source/theme-next-docs Commit Message: ${{ steps.get_commit_info.outputs.THEME_NEXT_DOCS_COMMIT_MESSAGE }}"
           echo "main Repository: ${{ github.repository }}"
           echo "main Commit ID : ${{ github.sha }}"
           echo "main Short SHA : ${{ steps.get_commit_info.outputs.MAIN_SHORT_SHA }}"
