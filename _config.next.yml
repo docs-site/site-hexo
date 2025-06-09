@@ -24,6 +24,16 @@ scheme: Gemini
 
 darkmode: true
 
+# ============================================================= #
+# ================ Site Information Settings ================== #
+# ============================================================= #
+favicon:
+  small: /images/favicon-16x16.ico
+  medium: /images/favicon-32x32.ico
+  apple_touch_icon: /images/apple-touch-icon-next.png
+  safari_pinned_tab: /images/logo.svg
+  #android_manifest: /manifest.json
+
 
 # ============================================================= #
 # ======================= Menu Settings ======================= #
@@ -89,6 +99,35 @@ menu_settings:
   icons: true
   badges: true
 
+
+# ============================================================= #
+# ===================== Sidebar Settings ====================== #
+# ============================================================= #
+sidebar:
+  position: left
+  display: post
+  padding: 18
+  offset: 12
+
+avatar:
+  url: /images/avatar.jpg
+  rounded: true
+  rotated: false
+
+social:
+  GitHub: https://github.com/sumumm || fab fa-github
+
+social_icons:
+  enable: true
+  icons_only: false
+  transition: true
+
+toc:
+  enable: true
+  number: false
+  wrap: false
+  expand_all: false
+  max_depth: 6
 
 
 # ============================================================= #
