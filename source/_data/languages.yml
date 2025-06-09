@@ -1,0 +1,117 @@
+# =====================================================
+# * Copyright © hk. 2022-2025. All rights reserved.
+# * File name  : languages.yml
+# * Author     : 苏木
+# * Date       : 2025-06-01
+# * Version    : 
+# * Description: 语言文件(可以与主题中语言文件合并，且优先级更高)
+# ======================================================
+##
+
+#-------------------------------中文------------------------------------
+zh-CN:
+  menu:
+    home: 首页
+    tags: 标签页
+    categories: 分类页
+    archives: 归档页
+    flink: 友人帐
+    about: 关于我
+    Docs: 文档
+    Getting Started: 入门指南
+    Installation: 安装
+    Deployment: 部署
+    Configuration: 配置
+    Upgrade: 升级
+
+    Theme Settings: 主题配置
+    Sidebar: 侧边栏
+    Footer: 页脚
+    Posts: 文章
+    Custom Pages: 自定义页面
+    Miscellaneous: 杂项
+    SEO: 搜索引擎优化
+    i18n: 国际化
+
+    Tag Plugins: 标签插件
+    Button: 按钮
+    Caniuse: 浏览器支持
+    Group Pictures: 图片组
+    Label: 标签
+    Link Grid: 链接网格
+    Mermaid: 流程图
+    WaveDrom: 波形图
+    Note: 注释
+    PDF: PDF文件
+    Tabs: 标签页
+
+    Third Party Plugins: 第三方插件
+    Math Equations: 数学公式
+    External Libraries: 外部库
+    Comment Systems: 评论系统
+    Post Widgets: 文章小工具
+    Statistics and Analytics: 统计与分析
+    Search Services: 搜索服务
+    Chat Services: 聊天服务
+
+    Advanced Settings: 高级设置
+    Vendors: 供应商
+    Custom Files: 自定义文件
+    Injects: 注入
+    Front Matter: 前置元数据
+
+    Troubleshooting: 故障排除
+#-------------------------------英文------------------------------------
+en:
+  menu:
+    home: home
+    tags: tags
+    categories: categories
+    archives: archives
+    flink: flink
+    about: about
+    Docs: Docs
+    Getting Started: Getting Started
+    Installation: Installation
+    Deployment: Deployment
+    Configuration: Configuration
+    Upgrade: Upgrade
+
+    Theme Settings: Theme Settings
+    Sidebar: Sidebar
+    Footer: Footer
+    Posts: Posts
+    Custom Pages: Custom Pages
+    Miscellaneous: Miscellaneous
+    SEO: SEO
+    i18n: i18n
+
+    Tag Plugins: Tag Plugins
+    Button: Button
+    Caniuse: Caniuse
+    Group Pictures: Group Pictures
+    Label: Label
+    Link Grid: Link Grid
+    Mermaid: Mermaid
+    WaveDrom: WaveDrom
+    Note: Note
+    PDF: PDF
+    Tabs: Tabs
+
+    Third Party Plugins: Third Party Plugins
+    Math Equations: Math Equations
+    External Libraries: External Libraries
+    Comment Systems: Comment Systems
+    Post Widgets: Post Widgets
+    Statistics and Analytics: Statistics and Analytics
+    Search Services: Search Services
+    Chat Services: Chat Services
+
+    Advanced Settings: Advanced Settings
+    Vendors: Vendors
+    Custom Files: Custom Files
+    Injects: Injects
+    Front Matter: Front Matter
+
+    Troubleshooting: Troubleshooting
+
