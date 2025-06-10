@@ -124,7 +124,14 @@ ignore:
 # ---------------------------------------------------------------------
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: next  # npm install hexo-theme-next 
+theme: next      # npm install hexo-theme-next 
+
+search:          # 本地搜索服务：npm install hexo-generator-searchdb
+  path: search.xml
+  field: post
+  content: true
+  format: html
+
 
 # ------------------------------
 # @brief  : Hexo 本地启动地址相关配置
