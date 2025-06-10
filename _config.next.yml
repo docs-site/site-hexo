@@ -129,6 +129,39 @@ toc:
   expand_all: false
   max_depth: 6
 
+# ============================================================= #
+# ==================== Misc Theme Settings ==================== #
+# ============================================================= #
+mobile_layout_economy: true
+
+codeblock:
+  theme:
+    light: atom-one-light
+    dark: atom-one-light
+  copy_button:
+    enable: true
+    style: mac
+  fold:
+    enable: true
+    height: 300
+
+back2top:
+  enable: true
+  sidebar: false
+  scrollpercent: true
+
+reading_progress:
+  enable: true
+  start_at: left
+  position: bottom
+  reversed: false
+  color: "#DA70D6" # "#37c6c0" 进度条的颜色,#DA70D6为兰花的紫色 
+  height: 6px
+
+pace:
+  enable: true
+  color: green
+  theme: minimal
 
 # ============================================================= #
 # ======================== Tag Plugins ======================== #
