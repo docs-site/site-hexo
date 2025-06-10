@@ -191,3 +191,14 @@ local_search:
   enable: true
   top_n_per_article: 1
 
+# ============================================================= #
+# ==================== External Libraries ===================== #
+# ============================================================= #
+pjax: true
+
+fancybox: true
+
+lazyload: true
+
+motion:
+  async: true
