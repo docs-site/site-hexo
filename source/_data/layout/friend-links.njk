@@ -1,0 +1,88 @@
+{# =====================================================================
+# * Copyright © hk. 2022-2025. All rights reserved.
+# * File name  : friend-links.njk
+# * Author     : 苏木
+# * Date       : 2025-06-12
+# * Version    : 
+# * Description: 友链模板文件，在 [site]/themes/next/layout/page.njk 文件中被注入 {{- next_inject('friendLinks') }}
+# *              [site]/_config.next.yml
+# *              [site]/source/_data/stylus/flink.styl(友链样式文件)
+# *              [site]/source/_data/flink.yml(友链信息配置文件)
+# *              [site]/source/_data/stylus/styles.styl
+# *              [site]/themes/next/source/css/main.styl
+# *              [site]/themes/next/layout/page.njk(新增友链模板注入点)
+# *              [site]/themes/next/scripts/events/lib/utils.js(新增友链模板注入点)
+# *              [site]/source/_data/layout/friend-links.njk(友链页面布局模板文件)
+# ======================================================================
+##}
+{% if theme.flink_style == "flexcard" %}
+    <div id="friendlinks">
+        <div class="cf-friends">
+            <div class = "flink">   {# 无flink，分段用 #}
+                {% if site.data.flink %}
+                    {# 遍历flink.yml中 class_name class_desc link_list #}
+                    {% for temp in site.data.flink %}  
+                        {# 处理 `class_name` #}
+                        {% if temp.class_name %}
+                            <h2><i class="fas fa-fan fa-spin" style="color: #FF1493;"></i> {{ temp.class_name }}</h2>  
+                        {% endif %}
+                        {# 处理 `class_desc` #}
+                        {% if temp.class_desc %}
+                            <div class="flink-desc">{{ temp.class_desc }}</div>
+                        {% endif %}
+                        {# 处理 `link_list` #}
+                        <div class = "flink-list">
+                            {# 每个link_list中的 name link avatar descr siteshot #}
+                            {% for item in temp.link_list %}
+                                <a class = "flink-list-card" href = "{{ item.link }}" target='_blank' title={{ item.descr }}>
+                                    <div class="wrapper cover">
+                                        {# 处理站点截图 #}
+                                        {% if item.siteshot %}
+                                            {% set siteshot = url_for(item.siteshot) %}
+                                        {% else %}
+                                            {% set siteshot = "https://image.thum.io/get/width/400/crop/800/allowJPG/wait/20/noanimate/" + item.link %}
+                                        {% endif %}
+                                        <img class = "cover" src = "{{ siteshot }}"/>
+                                    </div>
+                                    {# 头像处理 #}
+                                    <div class = "info">
+                                        {% if item.avatar %}
+                                            {% set avatar = url_for(item.avatar) %}
+                                        {% else %}
+                                            {% set avatar = url_for("/images/friends_404.gif") %}
+                                        {% endif %}
+                                        <img src = "{{ avatar }}"/>
+                                        <span class="flink-sitename">{{ item.name }}</span>
+                                    </div>
+                                </a>
+                            {% endfor %}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% elif theme.flink_style == "next" %}
+<div id="friendlinks">
+    <div class="flink-content">
+        <div class="flink-navigation">
+        {% for temp in site.data.flink %}
+            {% for item in temp.link_list %}
+                <div class="card">
+                    <a href="{{ item.link }}" target="_blank">
+                        <img class="ava" src="{{ item.avatar }}"/>
+                    </a>
+                    <div class="card-header">
+                        <div>
+                            <a href="{{ item.link }}" target="_blank">{{ item.name }}</a>
+                            <a href="{{ item.link }}"></a>
+                        </div>
+                        <div class="info" title="{{ item.descr }}">{{ item.descr }}</div>
+                    </div>
+                </div>
+            {% endfor %}
+        {% endfor %}
+        </div>
+    </div>
+</div>
+{% endif %}

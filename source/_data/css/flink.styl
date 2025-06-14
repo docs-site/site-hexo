@@ -1,0 +1,206 @@
+/**======================================================
+ * Copyright © hk. 2022-2025. All rights reserved.
+ * File name  : flink.styl
+ * Author     : 苏木
+ * Date       : 2025-06-12
+ * Version    : 
+ * Description: 自定义版友链样式
+ *              [site]/_config.next.yml
+ *              [site]/source/_data/stylus/flink.styl(友链样式文件)
+ *              [site]/source/_data/flink.yml(友链信息配置文件)
+ *              [site]/source/_data/stylus/styles.styl
+ *              [site]/themes/next/source/css/main.styl
+ *              [site]/themes/next/layout/page.njk(新增友链模板注入点)
+ *              [site]/themes/next/scripts/events/lib/utils.js(新增友链模板注入点)
+ *              [site]/source/_data/layout/friends-link.njk(友链页面布局模板文件)
+ * ======================================================
+ */
+
+/*--------------------------------------------------------------*/
+/* 友链样式1 */
+if hexo-config('flink_style') == 'flexcard'
+  #friendlinks
+    .cf-friends
+    .flink-desc
+        margin: .2rem 0 .5rem;
+        color: 	#6495ED;
+    .flink-list
+      overflow: auto;            // overflow属性指定如果内容溢出一个元素的框，会发生什么。auto:如果内容被修剪，则浏览器会显示滚动条以便查看其余的内容。
+      & > a                      // > 组合器选择前一个元素的直接子代的节点,例如 ul > li 匹配直接嵌套在 <ul> 元素内的所有 <li> 元素。
+        width: calc(25% - 15px); // width属性设置元素的宽度。calc() 函数用于动态计算长度值,运算符前后都需要保留一个空格，例如：width: calc(100% - 10px)；
+        height: 130px;           // height属性设置元素的高度 .flink-list > a 的高度。
+        position: relative;      // position属性指定一个元素（静态的，相对的，绝对或固定）的定位方法的类型。
+                                // relative 生成相对定位的元素，相对于其正常位置进行定位。因此，"left:20" 会向元素的 LEFT 位置添加 20 像素。
+        display: block;          // display 属性规定元素应该生成的框的类型。block: 此元素将显示为块级元素，此元素前后会带有换行符。
+        margin: 15px 7px;        // margin简写属性在一个声明中设置所有外边距属性。该属性可以有1到4个值。
+        float: left;             // float属性指定一个盒子（元素）是否应该浮动。元素向左浮动。这个可以使同行显示多个，否则会换行
+        overflow: hidden;        // overflow的hidden指定如果内容溢出一个元素的框,内容会被修剪，并且其余内容是不可见的。
+        border-radius: 10px;     // 这个属性允许为元素添加圆角边框！
+        transition: all .3s ease 0s, transform .6s cubic-bezier(.6, .2, .1, 1) 0s; // transition 属性设置元素当过渡效果，似乎没有什么用
+        box-shadow: 0 14px 38px rgba(0, 0, 0, .08), 0 3px 8px rgba(0, 0, 0, .06);  //外部添加阴影
+        &:hover                  // 鼠标悬停样式
+          .info                  // 鼠标悬停时信息显示(包括头像和名称)
+            transform: translateY(-100%); //Transform属性允许将元素旋转，缩放，移动，倾斜等,此处在鼠标悬停时将第一层图（相当于名字加头像那层图像）上移100%。
+          .wrapper img           // 背景图像img样式变化
+            transform: scale(1.2);  // scale() 方法缩放当前绘图至更大或更小,相当于底层站点截图放大
+        .cover
+          width: 100%;              // 背景图的宽度，也就是底部的站点截图宽度
+          transition: transform .5s ease-out; // ease-out 规定以慢速结束的过渡效果
+        .wrapper
+          position: relative;      // position属性指定一个元素（静态的，相对的，绝对或固定）的定位方法的类型。
+          img
+            height: 130px;         // 背景图片（站点截图）的高度
+            pointer-events: none;  // pointer-events CSS 属性指定在什么情况下 (如果有) 某个特定的图形元素可以成为鼠标事件的 target,这里应该是为了处理点击到图片后图片放大的问题
+        .info                      // 包含名称和头像的那层白色的蒙版一样的那层属性
+          display: flex;           // display 属性规定元素应该生成的框的类型，为了创建 flex 容器，一个容器的 display 属性值改为 flex 或者 inline-flex
+          flex-direction: column;  // flex 容器中添加 flex-direction 属性可以让我们更改 flex 元素的排列方向 column: 元素沿着列的方向排列显示
+          justify-content: center; // justify-content 用于设置或检索弹性盒子元素在主轴（横轴）方向上的对齐方式。
+          align-items: center;     // align-items 属性定义flex子项在flex容器的当前行的侧轴（纵轴）方向上的对齐方式。
+          width: 100%;             // 宽度
+          height: 100%;            // 高度
+          overflow: hidden;        // overflow的hidden指定如果内容溢出一个元素的框,内容会被修剪，并且其余内容是不可见的。
+          border-radius: 3px;      // 圆角
+          background-color: hsla(0, 0%, 100%, .7);    // background-color属性设置一个元素的背景颜色。 hsla() 函数使用色相、饱和度、亮度、透明度来定义颜色。
+          transition: transform .5s cubic-bezier(.6, .2, .1, 1) 0s;
+          img                      // info 下的图片属性
+            position: relative;    // position属性指定一个元素（静态的，相对的，绝对或固定）的定位方法的类型
+            top: 36px;             // 因为字体大小不同，可能导致头像偏高，可以在此处通过修改top的值来微调头像框的位置至卡片正中。
+            width: 66px;           // 图片宽度
+            height: 66px;          // 图片高度
+            border-radius: 50%;    // 圆角
+            box-shadow: 0 0 10px rgba(0, 0, 0, .3); // 阴影属性
+            z-index: 1;            // z-index 属性指定一个元素的堆叠顺序。拥有更高堆叠顺序的元素总是会处于堆叠顺序较低的元素的前面。
+            text-align: center;    // text-align属性指定元素文本的水平对齐方式。
+            pointer-events: none;  // pointer-events CSS 属性指定在什么情况下 (如果有) 某个特定的图形元素可以成为鼠标事件的 target,这里应该是为了处理点击到背景站点截图图片后图片放大的问题
+          span                     // info 下span标签属性
+            padding: 20px 10% 60px 10%;  // padding 简写属性在一个声明中设置所有填充属性。
+            font-size: 16px;       // 字体大小
+            width: 100%;           // 宽度
+            text-align: center;    // text-align属性指定元素文本的水平对齐方式。
+            box-shadow: 0 0 10px rgba(0, 0, 0, .3);  // 阴影
+            background-color: hsla(0, 0%, 100%, .7); // 背景色
+            color: #4C4948;      // Color属性指定文本的颜色。
+            white-space: nowrap;   // white-space属性指定元素内的空白怎样处理。nowrap文本不会换行，文本会在在同一行上继续，直到遇到 <br> 标签为止。
+            overflow: hidden;      // overflow的hidden指定如果内容溢出一个元素的框,内容会被修剪，并且其余内容是不可见的。
+            text-overflow: ellipsis;  // text-overflow属性指定当文本溢出包含它的元素，应该发生什么。ellipsis:显示省略符号来代表被修剪的文本。
+    .flink-list>a .info,
+    .flink-list>a .wrapper .cover
+      position: absolute;           // position属性指定一个元素（静态的，相对的，绝对或固定）的定位方法的类型。生成绝对定位的元素，相对于 static 定位以外的第一个父元素进行定位。
+                                    // 元素的位置通过 "left", "top", "right" 以及 "bottom" 属性进行规定。
+      top: 0;
+      left: 0;
+
+    @media screen and (max-width:1024px)  // 宽屏处理
+      .flink-list
+        & > a
+          width: calc(33.33333% - 15px);
+
+    @media screen and (max-width:600px)   //窄屏处理
+      .flink-list
+        & > a
+          width: calc(50% - 15px);
+    
+    [data-theme=dark]                     // 黑夜主题处理
+      .flink-list a .info,
+      .flink-list a .info span
+        background-color rgba(0, 0, 0, .6)
+      .flink-list
+        & > a
+          &:hover
+            &:before
+              background-color: rgba(18,18,18,0.8);
+
+/*--------------------------------------------------------------*/
+/* 友情链接样式2 */
+else if hexo-config('flink_style') == 'next'
+  #friendlinks{
+      margin-top: 5rem;
+      .flink-content{
+        margin-top:1rem;
+      }
+      .flink-navigation::after{
+        content: " ";
+        display: block;
+        clear: both;
+      }
+      .card {
+        width: 300px;
+        font-size: 1.1em;
+        padding: 10px 20px;
+        border-radius: 4px;
+        transition-duration: 0.15s;
+        margin-bottom: 1rem;
+        display:flex;
+        box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.12), 0 0 6px 0 rgba(0, 0, 0, 0.04);
+        background: rgba(68, 68, 68, 0.12)
+      }
+      .card:nth-child(odd) {
+        float: left;
+      }
+      .card:nth-child(even) {
+        float: right;
+        +mobile() {
+          float: left;
+        }
+      }
+      .card:hover {
+        transform: scale(1.1);
+        box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.12), 0 0 6px 0 rgba(0, 0, 0, 0.04);
+        background: rgba(68, 68, 68, 0.12)
+      }
+      .card a {
+        border:none;
+      }
+      .card .ava {
+        width: 3rem!important;
+        height: 3rem!important;
+        margin:0!important;
+        margin-right: 1em!important;
+        border-radius:50%
+        transition: transform 1s ease-out;
+      }
+      .ava:hover {
+          transform: rotateZ(360deg);
+        }
+      .card .card-header {
+        font-style: italic;
+        overflow: hidden;
+        width: 236px;
+      }
+      .card .card-header a {
+        font-style: normal;
+        color: 	#6495ED;
+        font-weight: bold;
+        text-decoration: none;
+      }
+      .card .card-header a:hover {
+        color: #d480aa;
+        text-decoration: none;
+      }
+      .card .card-header .info {
+        font-style:normal;
+        color:#a3a3a3;
+        font-size:14px;
+        min-width: 0;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+      }
+      span.focus-flink{
+        vertical-align:1px;
+        font-style:normal;
+        margin-left:10px;
+        position:unset;
+        left:0;
+        padding:0 7px 0 5px;
+        font-size:11px;
+        border-color:#42c02e;
+        border-radius:40px;
+        line-height:24px;
+        height:24px;
+        color:#fff!important;
+        background-color:#2bbc8a;
+        display:inline-block
+        }
+      span.focus-flink:hover{background-color:#318024}
+  }
