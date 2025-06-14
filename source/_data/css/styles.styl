@@ -18,6 +18,13 @@
 /* 添加友链样式 */
 @import 'flink'
 
+/*------------------------------ a ------------------------------*/
+/* 整体 a 标签样式(主要是为了解决友链flexcard样式中头像下的横线问题) */
+a{
+    // border-bottom: 1px solid #999;
+    border-bottom: none;
+}
+
 /*------------------------------ header ------------------------------*/
 /* header 标题栏背景 */
 $header-bg = unquote(hexo-config('styles.header.background'))
