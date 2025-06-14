@@ -25,6 +25,7 @@ timezone: 'Asia/Shanghai'    # 网站时区，对于中国大陆地区可以使�
 # ---------------------------------------------------------------------
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
 url: https://docs-site.github.io/site-hexo/
+root: /site-hexo/         # 根路径，通常是网站的根目录
 permalink: :year/:month/:day/:title/
 permalink_defaults:
 pretty_urls:

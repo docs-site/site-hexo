@@ -9,6 +9,311 @@
  *              [site]/themes/next/source/css/main.styl
  * ======================================================
  */
+/* 引入变量文件 */
+@import 'variables' 
 
 /* 引入自定义版权声明样式 */
 @import 'copyright' 
+
+
+/*------------------------------ header ------------------------------*/
+/* header 标题栏背景 */
+$header-bg = unquote(hexo-config('styles.header.background'))
+
+.site-brand-container {
+  if (hexo-config('styles.header.enable')) {
+    background: url($header-bg) no-repeat;
+    background-position: 50% 50%;
+    background-size: cover;
+  } else {
+    background: rgb(0, 0, 0);
+  }
+}
+
+/* header 顶部空白的宽度 */
+.header, .main-inner {
+  margin-top: 10px;                           /* margin-top属性设置元素的上部边距。*/
+
+  +mobile() {
+    margin-top: 0;
+  }
+}
+
+/* header 隐藏顶部线条(一条黑色的线) */
+.headband {
+  display: none;                             /* display 属性规定元素应该生成的框的类型。*/
+}
+
+/* header 底部两个圆角设置 */
+.header-inner { 
+  border-radius: $myradius;                 /* border-radius 属性是一个最多可指定四个 border -*- radius 属性的复合属性，这个属性允许你为元素添加圆角边框！*/
+}
+
+/*header 顶部圆角设置 */
+.site-brand-container {
+  border-radius: $myradius $myradius 0 0;   /* 顶栏顶部两个角圆角处理 */
+
+  +mobile(){
+    border-radius: 0 0 $myradius $myradius;
+  }
+}
+
+/* header 标题 */
+.site-title {
+  font-weight: bold;                          /* font-weight 属性设置文本的粗细 */       
+}
+
+/* header 副标题 */
+.site-subtitle {
+  font-weight: bold;                          /* font-weight 属性设置文本的粗细 */
+  font-family: $font-family-quote;            /* font - family属性指定一个元素的字体。*/
+  font-size: 1.0em;                           /* font-size 属性用于设置字体大小。*/
+}
+
+/*------------------------------ sidebar ------------------------------*/
+/* sidebar 侧栏社交链接背景 */
+.links-of-author-item a{
+    text-align: left;
+}
+
+/* sidebar 侧边栏圆角处理  */ 
+.sidebar-inner { 
+  border-radius: $myradius;       /* border-radius 属性是一个最多可指定四个 border -*- radius 属性的复合属性，这个属性允许你为元素添加圆角边框！*/
+}
+
+
+/*------------------------------ post ------------------------------*/
+/* post 文章卡片圆角 */
+.post-block,
+.post-block+.post-block {
+  border-radius: $myradius !important; /* border-radius 属性是一个最多可指定四个 border -*- radius 属性的复合属性，这个属性允许你为元素添加圆角边框！*/
+}
+
+/* post 分页页面提示圆角 */
+.pagination {
+  border-radius: $myradius !important; /* border-radius 属性是一个最多可指定四个 border -*- radius 属性的复合属性，这个属性允许你为元素添加圆角边框！*/
+}
+
+/* post 文章标题 */
+.posts-expand .post-title {
+  font-size: 1.3em;                   /* font-size 属性用于设置字体大小。*/
+  +mobile() {
+    margin-top: 10px;
+  }
+}
+
+/* post 文章内链接样式 */
+.post-body p a{
+  color:$post-hyperlinks-default;      /* Color属性指定文本的颜色。 */
+  border-bottom: none;                 /* border-bottom缩写属性设置一个声明中所有底部边框属性。*/
+  border-bottom: 1px solid $post-hyperlinks-default;  /* border-bottom缩写属性设置一个声明中所有底部边框属性。*/
+
+  &:hover {                            /* 鼠标悬停效果 */
+    color: $post-hyperlinks-hovering;
+    border-bottom: none;
+    border-bottom: 1px solid $post-hyperlinks-hovering;
+  }
+}
+
+/* post 图片阴影 */
+.posts-expand .post-body img {
+  box-shadow: $image-box-shadow;
+}
+
+/* post 中tab外挂标签中超链接的样式 */
+.table-container a{
+  color:$post-hyperlinks-default;      /* Color属性指定文本的颜色。 */
+  border-bottom: none;                 /* border-bottom缩写属性设置一个声明中所有底部边框属性。*/
+  border-bottom: 1px solid $post-hyperlinks-default;  /* border-bottom缩写属性设置一个声明中所有底部边框属性。*/
+
+  &:hover {                            /* 鼠标悬停效果 */
+    color: $post-hyperlinks-hovering;
+    border-bottom: none;
+    border-bottom: 1px solid $post-hyperlinks-hovering;
+  }
+}
+
+/* 带有 alt 的图片不显示描述性文本 */
+.post-body .image-caption{
+  visibility: hidden;
+}
+/* 文章内 ` ` 中的代码字体大小设置 */
+code {
+    font-size: 1em;
+}
+
+/*------------------------------ button ------------------------------*/
+/* button back2top */
+.back-to-top {
+  opacity: .8;                       /* Opacity属性设置一个元素了透明度级别。 */
+  font-weight: normal;               /* font-weight 属性设置文本的粗细 */       
+  font-size: 1em;                    /* font-size 属性用于设置字体大小。*/
+  border-radius: 1em;                /* border-radius 属性是一个最多可指定四个 border -*- radius 属性的复合属性，这个属性允许你为元素添加圆角边框！*/
+  right: 60px !important;            /* left 属性规定元素的左边缘。该属性定义了定位元素左外边距边界与其包含块左边界之间的偏移。
+							            将这里改为right可以以右边为基准进行设置位置 */
+  left: auto !important;             /* 覆盖其他地方定义的left属性，避免按钮被拉伸 */
+}
+
+/*------------------------------ tags ------------------------------*/
+/* 标签页面标签颜色 */
+for $tag-cloud in (0 .. 10) {
+  $tag-cloud-color = mix($tag-cloud-end, $tag-cloud-start, $tag-cloud * 10);
+  .tag-cloud-{$tag-cloud} {
+    border-bottom-color: $tag-cloud-color;
+    color: $tag-cloud-color;
+  }
+}
+
+/* 标签框的样式 */
+.tag-cloud a,                //标签页面的标签云
+.posts-expand .post-tags a { //文章末标签样式
+  padding: 2px 10px;
+  margin: 8px;
+  background: #D3D3D3;
+  font-weight: bold !important;
+  border-bottom: none;
+  border-radius: 15px;
+  btn-shadow();
+
+  &:hover {
+    color: #000000 !important;
+    text-decoration: none;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    color: var(--text-color) !important;
+    background: #3f5973;
+  }
+}
+
+/*------------------------------ categories ------------------------------*/
+/* categories 的样式 */
++mobile() {                                // 手机移动端样式
+  .category-all-page .category-list-item {
+    margin: 10px 40px;
+  }
+
+  .category-all-page .category-all ul {
+    list-style-type: disc;
+  }
+}
+
++tablet-desktop() {                        // 电脑端样式
+  .category-all-page .category-list-item {
+    margin: 0px 50px;
+  }
+
+  ul.category-list {
+    text-align: left;
+  }
+
+  li.category-list-item {
+    // display: inline-block;
+    display: block;
+  }
+
+  li.category-list-item a {
+    line-height: 3;
+    word-break: keep-all;
+    padding: 3px 15px;
+    font-weight: bold;
+    color: rgb(0, 0, 0);
+    background: #e2e2e2;
+    border-bottom: none;
+    border-radius: 15px;
+    btn-shadow();
+
+    &:hover {
+      color: #fc6423 !important;
+      text-decoration: none;
+    }
+  }
+}
+
+/*------------------------------ scroll ------------------------------*/
+/* 滚动条 */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: rgba(73, 177, 245, 0.2);
+  border-radius: 2em;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #49b1f5;
+  background-image: -webkit-linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.4) 25%,
+    transparent 25%,
+    transparent 50%,
+    rgba(255, 255, 255, 0.4) 50%,
+    rgba(255, 255, 255, 0.4) 75%,
+    transparent 75%,
+    transparent
+  );
+  border-radius: 2em;
+}
+
+::-webkit-scrollbar-corner {
+  background-color: transparent;
+}
+
+::-moz-selection {
+  color: #fff;
+  background-color: #49b1f5;
+}
+
+/*------------------------------ APlayer ------------------------------*/
+/* 音乐播放器本体位置隐藏与滑出 */
+.aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+  left: -66px!important;
+  transition: left 1s;      /* transition 属性设置元素当过渡效果,此处可设置音乐播放器滑出和缩回的时间*/
+  &:hover{
+    left: 0px!important;
+  }
+}
+
+/*------------------------------ comment ------------------------------*/
+/* comment 圆角 */
+.comments {
+  border-radius: $myradius !important;
+}
+/* comment 多评论系统时圆角处理 */
+.tabs-comment{
+  border-radius: $myradius !important;
+}
+/* comment 输入框背景图片 */
+.veditor {
+	background-image: url(/images/comment-bg.gif) !important;
+	background-repeat: no-repeat !important;
+	background-position: right !important;
+}
+/* comment 鼠标点击输入框隐藏图片 */
+.veditor:focus {
+	background-position-y: 200px !important;
+	transition: all .2s ease-in-out 0s !important;
+}
+
+/*------------------------------ Tag ------------------------------*/
+/* 行内文本样式 text -行内按键 */
+kbd{
+  font-size: 1.0rem !important;
+}
+
+/*------------------------------ Math ------------------------------*/
+/* 数学公式大小 */
+mjx-math {
+  font-size: 85% !important;
+}
+/*------------------------------ Poem ------------------------------*/
+/* 诗词大小 */
+.poem p {
+  font-size: 20px !important;
+}
+/* 诗词标题大小 */
+.poem-title {
+  font-size: 2em !important;
+}
