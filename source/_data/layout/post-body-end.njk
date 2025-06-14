@@ -1,0 +1,41 @@
+{# =====================================================================
+# * Copyright © hk. 2022-2025. All rights reserved.
+# * File name  : post-body-end.njk
+# * Author     : 苏木
+# * Date       : 2025-06-01
+# * Version    : 
+# * Description: 文章底部页脚模板文件，在 [blogRoot]/themes/next/layout/_macro/post.njk 文件中被注入 {{- next_inject('postBodyEnd') }}
+# *              [site]/_config.next.yml
+# *              [site]/themes/next/layout/_macro/post.njk
+# *              [site]/themes/next/scripts/events/lib/utils.js
+# *              [site]/themes/next/scripts/filters/default-injects.js
+# ======================================================================
+##}
+{# -------------------------------------------------------------------- #}
+{# 文章结束标记 #}
+{% if theme.post_end_flag.enable %}
+    <div>
+        {% if not is_index %}
+            <div style="text-align:center;color: #ccc;font-size:14px;">
+            ---------- 本文结束
+            <i class="{{ theme.post_end_flag.icon }}" style="color: {{ theme.post_end_flag.icon_color }}; font-size: {{ theme.post_end_flag.icon_size }}"></i>
+            感谢您的阅读 ----------
+            </div>
+        {% endif %}
+    </div>
+{% endif %}
+
+{# -------------------------------------------------------------------- #}
+{# 文章底部自定义版权 #}
+{% if theme.mine_creative %}
+  {% if page.copyright %}
+  <div class="my_post_copyright"> 
+    <p><span>文章标题:</span><a href="{{ url_for(page.path) }}">{{ page.title }}</a></p>
+    <p><span>文章作者:</span><a href="/" title="欢迎访问 {{ theme.mine_creative.blog_name }} 的学习笔记">{{ theme.mine_creative.author }}</a></p>
+    <p><span>发布时间:</span>{{ page.date.format("YYYY年MM月DD日 - HH:mm") }}</p>
+    <p><span>最后更新:</span>{{ page.updated.format("YYYY年MM月DD日 - HH:mm") }}</p>
+    <p><span>原始链接:</span><a href="{{ url_for(page.path) }}" title="{{ page.title }}">{{ page.permalink }}</a></p>
+    <p><span>许可协议:</span><i class="fab fa-creative-commons"></i> <a rel="license" href= "{{ theme.mine_creative.license_link }}" target="_blank" title="{{theme.mine_creative.license_title}}">{{ theme.mine_creative.license_name}}</a> 转载请保留原文链接及作者。</p>  
+  </div>
+  {% endif %}
+{% endif %}

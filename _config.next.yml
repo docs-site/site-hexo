@@ -18,6 +18,9 @@
 
 custom_file_path:
   footer: source/_data/layout/footer.njk
+  postBodyEnd: source/_data/layout/post-body-end.njk
+
+  style: source/_data/css/styles.styl
 
 
 # ============================================================= #
@@ -158,6 +161,25 @@ footer:
     hour: 0
     minute: 0
     second: 0
+
+# ============================================================= #
+# ======================= Post Settings ======================= #
+# ============================================================= #
+## 文章添加结束标记
+post_end_flag:
+  enable: true              # 是否开启文章结束标记
+  icon: fas fa-fan fa-spin  # 结束标记中的图标
+  icon_color: '#FF1493'     # 图标颜色
+  icon_size: 1rem           # 图标的大小
+
+## 自定义版权信息
+mine_creative:
+  enable: true              # 自定义文章版权信息
+  author: 苏木               # 文章作者
+  blog_name: 《苏木》        # 博客名称
+  license_link: https://creativecommons.org/licenses/by-nc-nd/4.0/ # 许可协议地址
+  license_name: 署名-非商业性使用-禁止演绎 4.0 国际                     # 许可协议地址
+  license_title: Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)   # 鼠标悬停显示内容
 
 # ============================================================= #
 # ==================== Misc Theme Settings ==================== #
