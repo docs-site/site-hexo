@@ -133,6 +133,10 @@ search:          # 本地搜索服务：npm install hexo-generator-searchdb
   content: true
   format: html
 
+cursor:
+  enable: true      
+  click_ena: true
+  click: showText   # 鼠标点击效果 fireWorks | showText
 
 # ------------------------------
 # @brief  : Hexo 本地启动地址相关配置
