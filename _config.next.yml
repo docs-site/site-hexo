@@ -160,7 +160,7 @@ footer:
   icon:
     name: fa fa-heart
     animated: true
-    color: "#808080"
+    color: "#ff0000"
   copyright: 苏木
   powered: false
   sitetime:                 # 站点运行时间

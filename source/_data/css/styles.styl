@@ -156,13 +156,16 @@ code {
 .back-to-top {
   opacity: .8;                       /* Opacity属性设置一个元素了透明度级别。 */
   font-weight: normal;               /* font-weight 属性设置文本的粗细 */       
-  font-size: 1em;                    /* font-size 属性用于设置字体大小。*/
+  font-size: 0.5em;                    /* font-size 属性用于设置字体大小。*/
   border-radius: 1em;                /* border-radius 属性是一个最多可指定四个 border -*- radius 属性的复合属性，这个属性允许你为元素添加圆角边框！*/
   right: 60px !important;            /* left 属性规定元素的左边缘。该属性定义了定位元素左外边距边界与其包含块左边界之间的偏移。
 							            将这里改为right可以以右边为基准进行设置位置 */
   left: auto !important;             /* 覆盖其他地方定义的left属性，避免按钮被拉伸 */
 }
 
+.sidebar-toggle {
+	bottom: 30px;
+}
 /*------------------------------ tags ------------------------------*/
 /* 标签页面标签颜色 */
 for $tag-cloud in (0 .. 10) {
