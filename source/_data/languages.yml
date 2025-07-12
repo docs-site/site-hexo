@@ -18,6 +18,7 @@ zh-CN:
     flink: 友人帐
     about: 关于我
     Docs: 文档
+    Theme Docs: 主题文档
     Getting Started: 入门指南
     Installation: 安装
     Deployment: 部署
@@ -61,6 +62,8 @@ zh-CN:
     Front Matter: 前置元数据
 
     Troubleshooting: 故障排除
+
+    Plugins Docs: 插件文档
 #-------------------------------英文------------------------------------
 en:
   menu:
@@ -114,4 +117,5 @@ en:
     Front Matter: Front Matter
 
     Troubleshooting: Troubleshooting
+    Plugins Docs: Plugins Docs
 
