@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "@docs-site/hexo-cursor-effects": "^1.0.1",
-    "@docs-site/hexo-tags-embed": "^1.0.3",
+    "@docs-site/hexo-tags-embed": "^1.0.4",
     "hexo": "^7.3.0",
     "hexo-deployer-git": "^4.0.0",
     "hexo-generator-archive": "^2.0.0",
