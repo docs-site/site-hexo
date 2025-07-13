@@ -21,8 +21,31 @@
 /*------------------------------ a ------------------------------*/
 /* 整体 a 标签样式(主要是为了解决友链flexcard样式中头像下的横线问题) */
 a{
-    // border-bottom: 1px solid #999;
-    border-bottom: none;
+  // border-bottom: 1px solid #999;
+  border-bottom: none;
+}
+
+/*------------------------------ body ------------------------------*/
+/* 整体背景样式 */
+// 移动端
+@media screen and (max-width:600px) {
+  body {
+    font-size: 0.9em;
+  }
+}
+
+// 平板
+@media screen and (min-width:600px) and (max-width:960px) {
+  body {
+    font-size: 0.9em;
+  }
+}
+
+// PC
+@media screen and (min-width:960px) {
+  body {
+    font-size: 0.9em;
+  }
 }
 
 /*------------------------------ header ------------------------------*/
@@ -229,6 +252,7 @@ for $tag-cloud in (0 .. 10) {
     word-break: keep-all;
     padding: 3px 15px;
     font-weight: bold;
+    font-size: 0.9em;
     color: rgb(0, 0, 0);
     background: #e2e2e2;
     border-bottom: none;
@@ -309,23 +333,8 @@ for $tag-cloud in (0 .. 10) {
 	transition: all .2s ease-in-out 0s !important;
 }
 
-/*------------------------------ Tag ------------------------------*/
-/* 行内文本样式 text -行内按键 */
-kbd{
-  font-size: 1.0rem !important;
-}
-
 /*------------------------------ Math ------------------------------*/
 /* 数学公式大小 */
 mjx-math {
   font-size: 85% !important;
-}
-/*------------------------------ Poem ------------------------------*/
-/* 诗词大小 */
-.poem p {
-  font-size: 20px !important;
-}
-/* 诗词标题大小 */
-.poem-title {
-  font-size: 2em !important;
 }
